@@ -132,6 +132,34 @@ class Synthesizer:
             gate2 = OrGate(a, temp, output)
             gate2.draw()
 
+#a.b.c
+        elif right.count(".") == 2 and "+" not in right:
+            a,b,c = right.split(".")
+            temp = "x1"
+
+            print("\nBoolean Expression :", code)
+            print("Synthesized Circuit :\n")
+
+            gate1 = AndGate(a.strip(), b.strip(), temp)
+            gate1.draw()
+
+            gate2 = AndGate(temp, c.strip(), output)
+            gate2.draw()
+
+#a+b+c
+        elif right.count("+") == 2 and "." not in right:
+            a,b,c = right.split("+")
+            temp= "x1"
+
+            print("\nBoolean Expression :", code)
+            print("Synthesized Circuit :\n")
+
+            gate1 = OrGate(a.strip(), b.strip(), temp)
+            gate1.draw()
+
+            gate2 = OrGate(temp, c.strip(), output)
+            gate2.draw()
+
 obj = Synthesizer()
 
 obj.gate_synthesize("y = not b")
