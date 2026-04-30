@@ -39,11 +39,11 @@ Divided the codebase into multiple classes and I have used inheritance between c
 ### Classes Implemented
 
 1. Gate (Base Class)
-   a. And Gate
-   b. OrGate
-   c. NotGate
-   d. NandGate
-   e. NorGate
+   a. And Gate <br>
+   b. OrGate <br>
+   c. NotGate <br>
+   d. NandGate <br>
+   e. NorGate <br>
 2. Synthesizer
 
 ### Fucntions Implemented
