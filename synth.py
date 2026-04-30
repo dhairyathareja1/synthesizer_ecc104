@@ -63,7 +63,7 @@ class NorGate(Gate):
         print()
 
 class Synthesizer:
-    def synthesize(self, code):
+    def gate_synthesize(self, code):
         code = code.lower()
         left, right = code.split("=")
         output = left.strip()
@@ -95,7 +95,44 @@ class Synthesizer:
         print("\nBehavioral Model :", code)
         print("Synthesized Circuit :\n")
         gate.draw()
+    
+    def boolean_synthesize(self, code):
+        code=code.lower()
+        left, right = code.split("=")
+        output = left.strip()
+        right = right.strip()
+
+#a.b+c
+        if "." in right and "+" in right:
+            part1, part2 = right.split("+")
+            a, b = part1.split(".")
+            c = part2.strip()
+            temp = "x1"
+            print("\nBoolean Expression :", code)
+            print("Synthesised Circuit :\n")
+
+            gate1 = AndGate(a.strip(), b.strip(), temp)
+            gate1.draw()
+
+            gate2 = OrGate(temp, c, output)
+            gate2.draw()
+
+#a+b.c
+        elif "+" in right and "." in right:
+            part1, part2 = right.split("+")
+            b, c = part2.split(".")
+            a = part1.strip()
+            temp = "x1"
+            print("\nBoolean Expression :", code)
+            print("Synthesised Circuit :\n")
+
+            gate1 = AndGate(b.strip(), c.strip(), temp)
+            gate1.draw()
+
+            gate2 = OrGate(a, temp, output)
+            gate2.draw()
 
 obj = Synthesizer()
 
-obj.synthesize("y = not b")
+obj.gate_synthesize("y = not b")
+obj.boolean_synthesize("y = a.b+c")
