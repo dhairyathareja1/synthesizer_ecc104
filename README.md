@@ -38,7 +38,7 @@ Divided the codebase into multiple classes and I have used inheritance between c
 
 ### Classes Implemented
 
-1. Gate (Base Class)
+1. Gate (Base Class) <br>
    a. And Gate <br>
    b. OrGate <br>
    c. NotGate <br>
